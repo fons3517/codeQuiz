@@ -1,3 +1,17 @@
+// Get a handle on html elements
+
+var container = document.querySelector('.container');
+var userScoreEl = document.getElementById('user-score');
+var totalScoreEl = document.getElementById('total-score');
+var questionTextEl = document.getElementById('question-text');
+var btnTrueEl = document.getElementById('true');
+var btnFalseEl = document.getElementById('false');
+var btnRestartEl = document.getElementById('restart');
+var btnPrevEl = document.getElementById('prev');
+var btnNextEl = document.getElementById('next');
+var btnSubmitEl = document.getElementById('submit');
+
+
 // Creating a timed quiz on JavaScript fundamentals that stores high scores
 
 // When I open the page, I see the title of the code quiz at the top
