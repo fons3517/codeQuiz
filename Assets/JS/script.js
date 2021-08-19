@@ -12,6 +12,7 @@ var btnRestartEl = document.getElementById('restart');
 var btnPrevEl = document.getElementById('prev');
 var btnNextEl = document.getElementById('next');
 var btnSubmitEl = document.getElementById('submit');
+var startBtnEl = document.createElement('button')
 
 
 // Creating Questions and Answers Options for Code iQuiz 101
@@ -56,9 +57,21 @@ var questions = [
 ];
 
 
+// Add onclick events to buttons
+//btnTrueEl.addEventListener('click', true);
+btnRestartEl.addEventListener('click', Restart);
+btnPrevEl.addEventListener('click', Prev);
+btnNextEl.addEventListener('click', Next);
+btnSubmitEl.addEventListener('click', Submit);
+
+
+// I see there is a Start Game Button that needs to be pressed to start the game
+
 
 
 // When I open the page, I see the title of the code quiz at the top
+// When I answer the question, I am presented with another question
+
     function beginCodeiQuiz() {
         var currentQuestion = 0;
         questionTextEl.innerHTML = questions[currentQuestion].question;
@@ -75,7 +88,7 @@ var questions = [
                 next();
             };
         };
-        btnFalseEl.innerHTML = questions[currentQuestion].ansers[1].option;
+        btnFalseEl.innerHTML = questions[currentQuestion].answers[1].option;
         btnFalseEl.onclick = () => {
             var choice = 1;
             if(questions[currentQuestion].answers[choice].answer) {
@@ -91,11 +104,18 @@ var questions = [
         btnPrevEl.classList.add('hide');
     }
 
+    //Creating Prev function to navigate from current page to previous page.
+    function Prev() {
+        currentQuestion--;
+
+    }
+
     beginCodeiQuiz();
 
     //Create restart function
     function restart() {
         currentQuestion = 0;
+        btnRestartEl.classList.remove('hide');
         btnPrevEl.classList.remove('hide');
         btnNextEl.classList.remove('hide');
         btnSubmitEl.classList.remove('hide');
@@ -105,12 +125,12 @@ var questions = [
         userScoreEl.innerHTML = score;
         beginCodeiQuiz();
     };
-    
+
 
 
 
 // make html page and  css page and style html using css
-// I see there is a Start Game Button that needs to be pressed to start the game
+
 // A timer starts as soon as I click Start Game Button and I'm presented with a question
 function countdown() {
     var timeRemaining = 180;
@@ -137,7 +157,6 @@ function countdown() {
 
 
 
-// When I answer the question, I am presented with another question
 // When I answer incorrectly, time is subtracted from the clock
 // When all the questions are answered or the timer reaches 0, the game is over
 // When the game is over, I can save my initials and my score
@@ -145,12 +164,6 @@ function countdown() {
 
 
 
-// Add onclick events to buttons
-//btnTrueEl.addEventListener('click', true);
-btnRestartEl.addEventListener('click', restart);
-btnPrevEl.addEventListener('click', prev);
-btnNextEl.addEventListener('click', next);
-btnSubmitEl.addEventListener('click', submit);
 
 
 
