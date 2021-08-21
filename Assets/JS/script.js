@@ -3,6 +3,7 @@
 // Get a handle on HTML elements
 var containerEl = document.querySelector('.container');
 var scoreEl = document.querySelector('.score');
+var startBtnEl = document.getElementById('start');
 var userScoreEl = document.getElementById('user-score');
 var questionTextEl = document.getElementById('question-text');
 var btnTrueEl = document.getElementById('true');
@@ -71,7 +72,7 @@ btnSubmitEl.addEventListener('click', Submit);
 startBtnEl.addEventListener('click', clickedStart);
 
 
-// I see there is a Start Game Button that needs to be pressed to start the game
+// Create Start Game function
 function clickedStart() {
         countdown();
         beginCodeiQuiz();
@@ -89,6 +90,7 @@ function countdown() {
         return"Time's up!";
       }
     },1000);
+
 };
 
 
