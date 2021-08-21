@@ -6,8 +6,10 @@ var scoreEl = document.querySelector('.score');
 var startBtnEl = document.getElementById('start');
 var userScoreEl = document.getElementById('user-score');
 var questionTextEl = document.getElementById('question-text');
-var btnTrueEl = document.getElementById('true');
-var btnFalseEl = document.getElementById('false');
+var btnOption1El = document.getElementById('option1');
+var btnOption2El = document.getElementById('option2');
+var btnOption3El = document.getElementById('option3');
+var btnOption4El = document.getElementById('option4');
 var btnRestartEl = document.getElementById('restart');
 var btnPrevEl = document.getElementById('prev');
 var btnNextEl = document.getElementById('next');
@@ -28,36 +30,48 @@ var questions = [
         
         //answer options next
         answers: [
-            {option:" A function passed as an arguement to another function.",answer:true},
-            {option:" A function with no name.",answer:false}
-        ]
+            " A function passed as an arguement to another function.",
+            " A function with no name.",
+            "",
+            ""
+        ],
+        answer: 0
     },
     {
         question:" What is a modal?",
         answers: [
-            {option:" The window to the DOM.",answer:false},
-            {option:" A pop-up screen that requires some form action before continuing.",answer:true}
+            " The window to the DOM.",,
+            " A pop-up screen that requires some form action before continuing.",
+            "A Modal is a footer",
+            "A Modal is a header"
         ]
     },
     {
         question:" Event Delegation is...",
         answers: [
-            {option:" A method to get a handle on elements.",answer:false},
-            {option:" A pattern to handle events efficiently.",answer:true}
+            " A method to get a handle on elements.",
+            " A pattern to handle events efficiently.",
+            " A process to callback a function",
+            "A method to find a variable's value"
         ]
     },
     {
         question:" What is the purpose of a for-loop?",
         answers: [
-            {option:" To exctract the value of an object.",answer:false},
-            {option:" To execute the same code more than once.",answer:true}
+            " To exctract the value of an object.",
+            " To execute the same code more than once.",
+            " To create a string",
+            " To create a boolean"
         ]
     },
     {
         question:" .unshift() adds element(s) to what part of an array?",
         answers: [
-            {option:" To the beginning of an array.",answer:true},
-            {option:" Always after the second array.",answer:false}
+            " To the beginning of an array.",
+            " Always after the second array.",
+            "It removes the element",
+            "It removes the id value"
+
         ]
     }
 
@@ -99,8 +113,8 @@ function countdown() {
 function beginCodeiQuiz() {
     var currentQuestion = 0;
     questionTextEl.innerHTML = questions[currentQuestion].question;
-    btnTrueEl.innerHTML = questions[currentQuestion].answers[0].option;
-    btnTrueEl.onclick = () => {
+    option1El.innerHTML = questions[currentQuestion].answers[0].option;
+    option1El.onclick = () => {
         var choice = 0;
         if(quesitons[currentQuestion].answers[choice].answer) {
             if(score < 4) {
@@ -112,8 +126,8 @@ function beginCodeiQuiz() {
             next();
         };
     };
-    btnFalseEl.innerHTML = questions[currentQuestion].answers[1].option;
-    btnFalseEl.onclick = () => {
+    btn0FalseEl.innerHTML = questions[currentQuestion].answers[1].option;
+    btn0FalseEl.onclick = () => {
         var choice = 1;
         if(questions[currentQuestion].answers[choice].answer) {
             if(score < 4) {
@@ -137,8 +151,8 @@ function Restart() {
     btnPrevEl.classList.remove('hide');
     btnNextEl.classList.remove('hide');
     btnSubmitEl.classList.remove('hide');
-    btnTrueEl.classList.remove('hide');
-    btnFalseEl.classList.remove('hide');
+    option1El.classList.remove('hide');
+    btn0FalseEl.classList.remove('hide');
     score = 0;
     userScoreEl.innerHTML = score;
     beginCodeiQuiz();
@@ -152,8 +166,8 @@ function Next() {
         btnPrevEl.classList.remove('hide');
     }
     questionTextEl.innerHTML = questions[currentQuestion].quesiton;
-    btnTrueEl.innerHTML = quesiton[currentQuestion].answers[0].option;
-    btnTrueEl.onclick = () => {
+    option1El.innerHTML = quesiton[currentQuestion].answers[0].option;
+    option1El.onclick = () => {
         var choice = 0;
         if(quesiton[currentQuestion].answers[choice].answer) {
             if(score < 4) {
@@ -165,8 +179,8 @@ function Next() {
             next()
         };
     }
-    btnFalseEl.innerHTML = questions[currentQuestion].answers[1].option;
-    btnFalseEl.onclick = () => {
+    btn0FalseEl.innerHTML = questions[currentQuestion].answers[1].option;
+    btn0FalseEl.onclick = () => {
         var choice = 1;
         if(question[currentQuestion].answers[choice].answer) {
             if(score < 4) {
@@ -190,8 +204,8 @@ function Prev() {
         btnNextEl.classList.remove('hide');
     };
     questionTextEl.innerHTML = questions[currentQuestion].question;
-    btnTrueEl.innerHTML = questions[currentQuestion].answers[0].option;
-    btnTrueEl.onclick = () => {
+    option1El.innerHTML = questions[currentQuestion].answers[0].option;
+    option1El.onclick = () => {
         var choice = 0;
         if(questions.currentQuestion.answers[choice].answer) {
             if(score < 5) {
@@ -203,8 +217,8 @@ function Prev() {
             next();
         }
     };
-    btnFalseEl.innerHTML  = questions[currentQuestion].answers[1].option;
-    btnFalseEl.onclick = () => {
+    btn0FalseEl.innerHTML  = questions[currentQuestion].answers[1].option;
+    btn0FalseEl.onclick = () => {
         var choice = 1;
         if(question[currentQuestion].answers[choice].answer) {
             if(score < 5) {
@@ -222,8 +236,8 @@ function Prev() {
 //Creating submit function for button
 function Submit() {
     btnSubmitEl.classList.add('hide');
-    btnTrueEl.classList.add('hide');
-    btnFalseEl.classList.add('hide');
+    option1El.classList.add('hide');
+    btn0FalseEl.classList.add('hide');
     btnPrevEl.classList.add('hide');
     btnNextEl.classList.add('hide');
     questionTextEl.innerHTML = "Way to go! Let's see how you did!!";
