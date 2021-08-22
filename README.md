@@ -10,6 +10,6 @@
 
 * [CodeQuizHomework](https://fons3517.github.io/codeQuiz/)
 
-* ![Screenshot of live url]()
+* ![Screenshot of CodeiQuiz](C:\Users\fons3\Documents\CBootCampRepo\Homework\codeQuiz)
 
 **Alfonso Robles 08/21/21**
