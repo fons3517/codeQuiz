@@ -24,6 +24,9 @@ btnOption2El.addEventListener('click', checkAnswers);
 btnOption3El.addEventListener('click', checkAnswers);
 btnOption4El.addEventListener('click', checkAnswers);
 
+//Variable for
+
+var score = 0;
 
 //Dynamically create h1 element;create countdown div handle; appenChild
 var startCountdownEl = document.querySelector('.start-countdown');
@@ -54,7 +57,8 @@ var questions = [
             " A pop-up screen that requires some form action before continuing.",
             "A Modal is a footer",
             "A Modal is a header"
-        ]
+        ],
+        answer: 0
     },
     {
         question:" Event Delegation is...",
@@ -63,7 +67,8 @@ var questions = [
             " A pattern to handle events efficiently.",
             " A process to callback a function",
             "A method to find a variable's value"
-        ]
+        ],
+        answer: 0
     },
     {
         question:" What is the purpose of a for-loop?",
@@ -72,7 +77,8 @@ var questions = [
             " To execute the same code more than once.",
             " To create a string",
             " To create a boolean"
-        ]
+        ],
+        answer: 0
     },
     {
         question:" .unshift() adds element(s) to what part of an array?",
@@ -82,7 +88,8 @@ var questions = [
             "It removes the element",
             "It removes the id value"
 
-        ]
+        ],
+        answer: 0
     }
 
 ];
@@ -131,7 +138,23 @@ function beginCodeiQuiz() {
 
 function checkAnswers() {
     var userChoice = this.getAttribute("data-value")
-    console.log(userChoice)
+    console.log(userChoice);
+    if(userChoice == questions[currentQuestion].answer)
+    {
+        score+=10;
+    } else{
+        score -= 5;
+
+    }
+    if(currentQuestion < questions.length-1){
+        currentQuestion++;
+        beginCodeiQuiz()
+    }else {
+        console.log(score)
+        questionSectionEl.style.display = "none";
+        controlsEl.style.display = "block";
+
+    }
 };
 
 
