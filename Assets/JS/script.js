@@ -14,18 +14,26 @@ var btnRestartEl = document.getElementById('restart');
 var btnPrevEl = document.getElementById('prev');
 var btnNextEl = document.getElementById('next');
 var btnSubmitEl = document.getElementById('submit');
+var scoreValueEl = document.getElementById('score-value');
+var userInitialsEl = document.getElementById('userInitials');
+var btnSaveUserEl = document.getElementById('save-user');
 var questionSectionEl = document.getElementById('question-section');
 var controlsEl = document.querySelector('.controls');
+
+// Hide sections
 questionSectionEl.style.display = "none";
 controlsEl.style.display = "none";
+userInitialsEl.style.display = "none";
+
+
+// CurrentQuestion variable
 var currentQuestion = 0;
-btnOption1El.addEventListener('click', checkAnswers);
-btnOption2El.addEventListener('click', checkAnswers);
-btnOption3El.addEventListener('click', checkAnswers);
-btnOption4El.addEventListener('click', checkAnswers);
 
-//Variable for
 
+// Time Remaining variable
+var timeRemaining = 120;
+
+// Variable for userScore
 var score = 0;
 
 //Dynamically create h1 element;create countdown div handle; appenChild
@@ -45,48 +53,49 @@ var questions = [
         answers: [
             " A function passed as an arguement to another function.",
             " A function with no name.",
-            "",
-            ""
+            " A method to recall the preceeding funvction",
+            " It is not a real function"
         ],
         answer: 0
     },
     {
         question:" What is a modal?",
         answers: [
-            " The window to the DOM.",,
-            " A pop-up screen that requires some form action before continuing.",
-            "A Modal is a footer",
-            "A Modal is a header"
+            " The window to the DOM.",
+            " A pop-up screen that needs attention",
+            " A Modal is a footer",
+            " A Modal is a header"
         ],
-        answer: 0
+        answer: 1
     },
     {
         question:" Event Delegation is...",
         answers: [
             " A method to get a handle on elements.",
-            " A pattern to handle events efficiently.",
             " A process to callback a function",
-            "A method to find a variable's value"
+            " A method to find a variable's value",
+            " A pattern to handle events efficiently.",
+
         ],
-        answer: 0
+        answer: 3
     },
     {
         question:" What is the purpose of a for-loop?",
         answers: [
             " To exctract the value of an object.",
-            " To execute the same code more than once.",
             " To create a string",
+            " To execute the same code more than once.",
             " To create a boolean"
         ],
-        answer: 0
+        answer: 2
     },
     {
         question:" .unshift() adds element(s) to what part of an array?",
         answers: [
             " To the beginning of an array.",
-            " Always after the second array.",
-            "It removes the element",
-            "It removes the id value"
+            " Always after the second value in an array.",
+            " Both of these",
+            " None of these"
 
         ],
         answer: 0
@@ -102,10 +111,17 @@ btnNextEl.addEventListener('click', Next);
 btnSubmitEl.addEventListener('click', Submit);
 startBtnEl.addEventListener('click', clickedStart);
 
+// Add eventListeners for user options
+btnOption1El.addEventListener('click', checkAnswers);
+btnOption2El.addEventListener('click', checkAnswers);
+btnOption3El.addEventListener('click', checkAnswers);
+btnOption4El.addEventListener('click', checkAnswers);
+
+
 
 // Create Start Game function
 function clickedStart() {
-        // countdown();
+         countdown();
         questionSectionEl.style.display = "block";
         beginCodeiQuiz();
 };
@@ -113,13 +129,12 @@ function clickedStart() {
 
 // Create countdown timer
 function countdown() {
-    var timeRemaining = 240;
     var timeInterval = setInterval(function () {
       timeRemaining--;
-      countdownTimerEl.textContent + ":Time Remaining.";
+      countdownTimerEl.textContent = timeRemaining + " Seconds remaining";
       if(timeRemaining === 0) {
         clearInterval(timeInterval);
-        return"Time's up!";
+        return "Time's up!";
       }
     },1000);
 
@@ -141,7 +156,7 @@ function checkAnswers() {
     console.log(userChoice);
     if(userChoice == questions[currentQuestion].answer)
     {
-        score+=10;
+        score += 10;
     } else{
         score -= 5;
 
@@ -152,7 +167,7 @@ function checkAnswers() {
     }else {
         console.log(score)
         questionSectionEl.style.display = "none";
-        controlsEl.style.display = "block";
+        userInitialsEl.style.display = "block";
 
     }
 };

@@ -9,7 +9,8 @@
 </head>
 <body>
     <main class="container">
-        <div class ="start-countdown">
+        <div>
+            <p></p> <span class ="start-countdown"></span></p>
             <button class="btn btn-start" id="start">Start iQuiz</button>
         </div>
      
@@ -22,12 +23,19 @@
             <div id="question-text"></div>
             <div class="options">
                 <button class="btn btn-option" data-value = 0 id="option1">True</button>
-                <button class="btn btn-option" data-value=1 id="option2">False</button>
+                <button class="btn btn-option" data-value= 1 id="option2">False</button>
                 <button class="btn btn-option" data-value = 2 id="option3">False</button>
                 <button class="btn btn-option" data-value= 3  id="option4">False</button>
             </div>
         </div>
-
+         <div id="userInitials">
+             <h3 id="score-value"></h3>
+             <h6>Previous Score</h6>
+             <h4 id="score-history"></h4>
+             <label> Enter User Intials</label>
+             <input type ="text" id="initials">
+             <button id="save-user">Save Score</button>
+         </div>
         <div class="controls">
             <button class="btn btn-restart" id="restart">Restart</button>
             <button class="btn btn-prev" id="prev">Prev</button>
