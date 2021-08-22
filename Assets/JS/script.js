@@ -19,6 +19,8 @@ var userInitialsEl = document.getElementById('userInitials');
 var btnSaveUserEl = document.getElementById('save-user');
 var questionSectionEl = document.getElementById('question-section');
 var controlsEl = document.querySelector('.controls');
+var prevScoreEl = document.getElementById('prev-score');
+var enterInitials = document.getElementById('user-initials');
 
 // Hide sections
 questionSectionEl.style.display = "none";
@@ -31,7 +33,7 @@ var currentQuestion = 0;
 
 
 // Time Remaining variable
-var timeRemaining = 120;
+var timeRemaining = 60;
 
 // Variable for userScore
 var score = 0;
@@ -110,6 +112,7 @@ btnPrevEl.addEventListener('click', Prev);
 btnNextEl.addEventListener('click', Next);
 btnSubmitEl.addEventListener('click', Submit);
 startBtnEl.addEventListener('click', clickedStart);
+btnSaveUserEl.addEventListener('click', saveScore);
 
 // Add eventListeners for user options
 btnOption1El.addEventListener('click', checkAnswers);
@@ -135,8 +138,14 @@ function countdown() {
       countdownTimerEl.textContent = timeRemaining + " Seconds remaining";
       if(timeRemaining === 0) {
         clearInterval(timeInterval);
-        return "Time's up!";
-      };
+        countdownTimerEl.style.display = "none";
+        userInitialsEl.style.display = "block";
+        btnOption1El.style.display = "none";
+        btnOption2El.style.display = "none";
+        btnOption3El.style.display = "none";
+        btnOption4El.style.display = "none";
+        userInitials.style.display = "none";
+    };
     },1000);
 
 };
@@ -152,6 +161,7 @@ function beginCodeiQuiz() {
     btnOption4El.innerHTML = questions[currentQuestion].answers[3]
 };
 
+// When I answer incorrectly, time is subtracted from user score
 function checkAnswers() {
     var userChoice = this.getAttribute("data-value")
     console.log(userChoice);
@@ -166,9 +176,11 @@ function checkAnswers() {
         currentQuestion++;
         beginCodeiQuiz()
     }else {
-        console.log(score)
+        // When the game is over, I can save my initials and my score
+        console.log(score);
         questionSectionEl.style.display = "none";
         userInitialsEl.style.display = "block";
+        countdownTimerEl.style.display = "none";
 
     }
 };
@@ -178,13 +190,14 @@ function checkAnswers() {
 function Restart() {
     currentQuestion = 0;
     startBtnEl.classList.remove('hide');
-    btnRestartEl.classList.remove('hide');
+    btnRestartEl.classList.remove('block');
     btnPrevEl.classList.remove('hide');
     btnNextEl.classList.remove('hide');
     btnSubmitEl.classList.remove('hide');
     option1El.classList.remove('hide');
     btn0FalseEl.classList.remove('hide');
     score = 0;
+
     userScoreEl.innerHTML = score;
     beginCodeiQuiz();
 };
@@ -227,6 +240,16 @@ function Next() {
 };
 
 
+
+//Creating submit function for button
+function Submit() {
+    btnSubmitEl.classList.add('hide');
+    option1El.classList.add('hide');
+    btn0FalseEl.classList.add('hide');
+    btnPrevEl.classList.add('hide');
+    btnNextEl.classList.add('hide');
+    questionTextEl.innerHTML = "Way to go! Let's see how you did!!";
+};
 //Creating Prev function for button to navigate from current page to previous page.
 function Prev() {
     currentQuestion--;
@@ -264,19 +287,18 @@ function Prev() {
     btnNextEl.classList.remove('hide');
 };
 
-//Creating submit function for button
-function Submit() {
-    btnSubmitEl.classList.add('hide');
-    option1El.classList.add('hide');
-    btn0FalseEl.classList.add('hide');
-    btnPrevEl.classList.add('hide');
-    btnNextEl.classList.add('hide');
-    questionTextEl.innerHTML = "Way to go! Let's see how you did!!";
-};
 
-// When I answer incorrectly, time is subtracted from the clock
-// When all the questions are answered or the timer reaches 0, the game is over
-// When the game is over, I can save my initials and my score
+
+// Save score
+function saveScore() {
+    btnRestartEl.style.display = "block";
+    btnSaveUserEl.style.display = "none";
+    prevScoreEl.style.display = "none";
+    userInitials.style.display = "none";
+    btnRestartEl.style.display = "block";
+    Restart();
+};
+beginCodeiQuiz();
 
 
 
