@@ -126,8 +126,9 @@ btnOption4El.addEventListener('click', checkAnswers);
 function clickedStart() {
          countdown();
         questionSectionEl.style.display = "block";
+        startBtnEl.style.display = "none"
         beginCodeiQuiz();
-        startBtnEl.style.display = "none";
+
 };
 
 
@@ -189,15 +190,14 @@ function checkAnswers() {
 //Create restart function
 function Restart() {
     currentQuestion = 0;
-    startBtnEl.classList.remove('hide');
-    btnRestartEl.classList.remove('block');
+    startBtnEl.classList.remove('block');
+    btnRestartEl.classList.remove('hide');
     btnPrevEl.classList.remove('hide');
     btnNextEl.classList.remove('hide');
     btnSubmitEl.classList.remove('hide');
     option1El.classList.remove('hide');
     btn0FalseEl.classList.remove('hide');
-    score = 0;
-
+    score = '';
     userScoreEl.innerHTML = score;
     beginCodeiQuiz();
 };
@@ -206,8 +206,8 @@ function Restart() {
 function Next() {
     currentQuestion++;
     if(currentQuestion >= 4) {
-        btnNextEl.classList.add('hide');
-        btnPrevEl.classList.remove('hide');
+        btnNextEl.style.display = ('hide');
+        btnPrevEl.style.display = ('block');
     }
     questionTextEl.innerHTML = questions[currentQuestion].quesiton;
     option1El.innerHTML = quesiton[currentQuestion].answers[0].option;
@@ -250,12 +250,13 @@ function Submit() {
     btnNextEl.classList.add('hide');
     questionTextEl.innerHTML = "Way to go! Let's see how you did!!";
 };
+
 //Creating Prev function for button to navigate from current page to previous page.
 function Prev() {
     currentQuestion--;
     if(currentQuestion <= 0) {
-        btnPrevEl.classList.add('hide');
-        btnNextEl.classList.remove('hide');
+        btnPrevEl.style.display = 'hide';
+        btnNextEl.style.display = 'hide';
     };
     questionTextEl.innerHTML = questions[currentQuestion].question;
     option1El.innerHTML = questions[currentQuestion].answers[0].option;
@@ -296,7 +297,7 @@ function saveScore() {
     prevScoreEl.style.display = "none";
     userInitials.style.display = "none";
     btnRestartEl.style.display = "block";
-    Restart();
+    startBtnEl.style.display = "block";
 };
 beginCodeiQuiz();
 
