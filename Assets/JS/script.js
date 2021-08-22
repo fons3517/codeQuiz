@@ -98,7 +98,8 @@ startBtnEl.addEventListener('click', clickedStart);
 
 // Create Start Game function
 function clickedStart() {
-        countdown();
+        // countdown();
+        questionSectionEl.style.display = "block";
         beginCodeiQuiz();
 };
 
@@ -122,10 +123,15 @@ function countdown() {
 // Create function for beginning code quiz
 function beginCodeiQuiz() {
     questionTextEl.innerHTML = questions[currentQuestion].question;
-    option1El.innerHTML = questions[currentQuestion].answers[0]
-    option2El.innerHTML = questions[currentQuestion].answers[1]
-    option3El.innerHTML = questions[currentQuestion].answers[2]
-    option4El.innerHTML = questions[currentQuestion].answers[3]
+    btnOption1El.innerHTML = questions[currentQuestion].answers[0]
+    btnOption2El.innerHTML = questions[currentQuestion].answers[1]
+    btnOption3El.innerHTML = questions[currentQuestion].answers[2]
+    btnOption4El.innerHTML = questions[currentQuestion].answers[3]
+};
+
+function checkAnswers() {
+    var userChoice = this.getAttribute("data-value")
+    console.log(userChoice)
 };
 
 
