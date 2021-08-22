@@ -53,7 +53,7 @@ var questions = [
         answers: [
             " A function passed as an arguement to another function.",
             " A function with no name.",
-            " A method to recall the preceeding funvction",
+            " A method to recall the preceeding function",
             " It is not a real function"
         ],
         answer: 0
@@ -124,6 +124,7 @@ function clickedStart() {
          countdown();
         questionSectionEl.style.display = "block";
         beginCodeiQuiz();
+        startBtnEl.style.display = "none";
 };
 
 
@@ -135,7 +136,7 @@ function countdown() {
       if(timeRemaining === 0) {
         clearInterval(timeInterval);
         return "Time's up!";
-      }
+      };
     },1000);
 
 };
