@@ -12,18 +12,19 @@
         <div class ="start-countdown">
             <button class="btn btn-start" id="start">Start iQuiz</button>
         </div>
-        <div class="score"> 
-            <span id="user-score">0</span>
-            <span id="total-score">/ 5</span>
-        </div>
+     
 
         <div class="content" id="question-section">
+            <div class="score"> 
+                <span id="user-score">0</span>
+                <span id="total-score">/ 5</span>
+            </div>
             <div id="question-text"></div>
             <div class="options">
-                <button class=" btn btn-option" id="true">True</button>
-                <button class="btn btn-option" id="false0">False</button>
-                <button class="btn btn-option" id="false1">False</button>
-                <button class="btn btn-option" id="false2">False</button>
+                <button class="btn btn-option" data-value = 0 id="option1">True</button>
+                <button class="btn btn-option" data-value=1 id="option2">False</button>
+                <button class="btn btn-option" data-value = 2 id="option3">False</button>
+                <button class="btn btn-option" data-value= 3  id="option4">False</button>
             </div>
         </div>
 

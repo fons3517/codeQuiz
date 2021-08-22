@@ -14,6 +14,16 @@ var btnRestartEl = document.getElementById('restart');
 var btnPrevEl = document.getElementById('prev');
 var btnNextEl = document.getElementById('next');
 var btnSubmitEl = document.getElementById('submit');
+var questionSectionEl = document.getElementById('question-section');
+var controlsEl = document.querySelector('.controls');
+questionSectionEl.style.display = "none";
+controlsEl.style.display = "none";
+var currentQuestion = 0;
+btnOption1El.addEventListener('click', checkAnswers);
+btnOption2El.addEventListener('click', checkAnswers);
+btnOption3El.addEventListener('click', checkAnswers);
+btnOption4El.addEventListener('click', checkAnswers);
+
 
 //Dynamically create h1 element;create countdown div handle; appenChild
 var startCountdownEl = document.querySelector('.start-countdown');
@@ -111,37 +121,13 @@ function countdown() {
 
 // Create function for beginning code quiz
 function beginCodeiQuiz() {
-    var currentQuestion = 0;
     questionTextEl.innerHTML = questions[currentQuestion].question;
-    option1El.innerHTML = questions[currentQuestion].answers[0].option;
-    option1El.onclick = () => {
-        var choice = 0;
-        if(quesitons[currentQuestion].answers[choice].answer) {
-            if(score < 4) {
-                scrore++;
-            };
-        };
-        userScoreEl.innerHTML = score;
-        if (currentQuestion < 4) {
-            next();
-        };
-    };
-    btn0FalseEl.innerHTML = questions[currentQuestion].answers[1].option;
-    btn0FalseEl.onclick = () => {
-        var choice = 1;
-        if(questions[currentQuestion].answers[choice].answer) {
-            if(score < 4) {
-                score++;
-            };
-        };
-        userScoreEl.innerHTML = score;
-        if(currentQuestion < 4) {
-            next();
-        };
-    };
-    btnPrevEl.classList.add('hide');
+    option1El.innerHTML = questions[currentQuestion].answers[0]
+    option2El.innerHTML = questions[currentQuestion].answers[1]
+    option3El.innerHTML = questions[currentQuestion].answers[2]
+    option4El.innerHTML = questions[currentQuestion].answers[3]
 };
-beginCodeiQuiz();
+
 
 //Create restart function
 function Restart() {
