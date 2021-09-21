@@ -8,8 +8,9 @@
 
 ### Link to deployed site; screenshot of up-to-date site included.
 
-* [CodeQuizHomework](https://fons3517.github.io/codeQuiz/)
-
-* ![Screenshot of CodeiQuiz](./codeiQuiz.JPG)
+[CodeQuizHomework](https://fons3517.github.io/codeQuiz/)
+![Screenshot of CodeiQuiz](./codeiQuiz.JPG)
+![Screenshot 2](./CodeiQuiz2.JPG)
+![Screenshot 3](./CodeiQuiz3.JPG)
 
 **Alfonso Robles 08/21/21**
